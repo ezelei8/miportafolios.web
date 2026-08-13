@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viví Salto · Circuitos guiados por la ciudad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbf7f2;
+    --bg-soft:#f4ece1;
+    --ink:#231b16;
+    --ink-dim:#6b5f54;
+    --card:#ffffff;
+    --card-border:#e8ddce;
+    --coral:#d9534f;
+    --coral-2:#e8837e;
+    --teal:#1c4b4a;
+    --teal-2:#2d6b68;
+    --gold:#c9973f;
+    --radius:18px;
+    --maxw:1140px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  section{padding:90px 0;}
+  .serif{font-family:'Playfair Display', serif;}
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(10px);
+    background:rgba(251,247,242,0.88);
+    border-bottom:1px solid var(--card-border);
+  }
+  nav.wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 24px;}
+  .brand{display:flex; align-items:center; gap:8px; font-family:'Playfair Display',serif; font-weight:700; font-size:1.35rem; color:var(--teal);}
+  .brand .dot{width:10px; height:10px; border-radius:50%; background:var(--coral); display:inline-block;}
+  .nav-links{display:flex; gap:30px; font-size:0.92rem; color:var(--ink-dim); font-weight:500;}
+  .nav-links a:hover{color:var(--coral);}
+  .nav-cta{background:var(--coral); color:#fff; font-weight:700; padding:11px 22px; border-radius:999px; font-size:0.88rem;}
+  .nav-cta:hover{background:#c44541;}
+  @media (max-width:760px){ .nav-links{display:none;} }
+
+  /* HERO */
+  .hero{
+    padding:100px 0 90px;
+    background:
+      radial-gradient(circle at 10% 10%, rgba(217,83,79,0.10), transparent 45%),
+      radial-gradient(circle at 90% 0%, rgba(28,75,74,0.10), transparent 45%);
+    border-bottom:1px solid var(--card-border);
+  }
+  .hero-inner{display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;}
+  @media (max-width:900px){.hero-inner{grid-template-columns:1fr;}}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--card); border:1px solid var(--card-border); color:var(--teal);
+    padding:7px 16px; border-radius:999px; font-size:0.8rem; font-weight:600; margin-bottom:26px;
+  }
+  h1{
+    font-family:'Playfair Display', serif; font-weight:800;
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    line-height:1.1; margin:0 0 20px; color:var(--teal);
+  }
+  h1 em{color:var(--coral); font-style:normal;}
+  .lead{font-size:1.12rem; color:var(--ink-dim); max-width:520px; margin:0 0 34px;}
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    padding:14px 26px; border-radius:12px; font-weight:700; font-size:0.95rem;
+    display:inline-flex; align-items:center; gap:8px; border:1px solid transparent;
+  }
+  .btn-primary{background:var(--coral); color:#fff;}
+  .btn-primary:hover{background:#c44541;}
+  .btn-ghost{border-color:var(--card-border); color:var(--teal); background:var(--card);}
+  .btn-ghost:hover{border-color:var(--teal);}
+  .hero-stats{display:flex; gap:38px; margin-top:56px; flex-wrap:wrap;}
+  .hero-stats .s b{display:block; font-family:'Playfair Display',serif; font-size:1.9rem; color:var(--coral);}
+  .hero-stats .s span{color:var(--ink-dim); font-size:0.84rem;}
+
+  .hero-visual{
+    aspect-ratio:1/1.05; border-radius:24px; overflow:hidden; position:relative;
+    background:linear-gradient(155deg, var(--teal), var(--teal-2));
+    display:flex; align-items:flex-end; padding:28px; color:#fff;
+    border:1px solid var(--card-border);
+  }
+  .hero-visual::before{
+    content:"🏛️"; position:absolute; top:24px; right:28px; font-size:2.4rem; opacity:0.85;
+  }
+  .hero-visual .cap{font-family:'Playfair Display',serif; font-size:1.3rem; line-height:1.3;}
+  .hero-visual .cap small{display:block; font-family:'Inter',sans-serif; font-size:0.8rem; opacity:0.75; margin-top:8px; font-weight:400;}
+
+  /* SECTION HEADS */
+  .section-head{max-width:600px; margin:0 auto 54px; text-align:center;}
+  .tag{color:var(--coral); font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em;}
+  .section-head h2{font-family:'Playfair Display',serif; font-size:clamp(1.9rem,3.6vw,2.6rem); margin:12px 0 12px; color:var(--teal);}
+  .section-head p{color:var(--ink-dim); margin:0;}
+
+  .bg-soft{background:var(--bg-soft); border-top:1px solid var(--card-border); border-bottom:1px solid var(--card-border);}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:0.8fr 1.2fr; gap:48px; align-items:center;}
+  @media (max-width:860px){.about-grid{grid-template-columns:1fr;}}
+  .founders{display:flex; gap:14px;}
+  .avatar{
+    width:64px; height:64px; border-radius:50%; background:var(--teal); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:1.3rem;
+    border:3px solid var(--card);
+    margin-right:-18px;
+  }
+  .avatar:nth-child(2){background:var(--coral);}
+  .avatar:nth-child(3){background:var(--gold);}
+  .about-copy h3{font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--teal); margin:0 0 4px;}
+  .about-copy .role{color:var(--ink-dim); font-size:0.88rem; margin-bottom:18px;}
+  .about-copy p{color:var(--ink-dim); margin:0 0 14px; font-size:0.98rem;}
+
+  /* CIRCUITS */
+  .circuits-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px;}
+  @media (max-width:820px){.circuits-grid{grid-template-columns:1fr;}}
+  .circuit{
+    background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius);
+    padding:28px; position:relative; overflow:hidden;
+  }
+  .circuit::before{
+    content:""; position:absolute; top:0; left:0; width:6px; height:100%; background:var(--coral);
+  }
+  .circuit .meta{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px;}
+  .badge{
+    font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em;
+    padding:4px 10px; border-radius:999px; background:var(--bg-soft); color:var(--teal);
+  }
+  .circuit h4{font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--teal); margin:0 0 4px;}
+  .circuit .loc{color:var(--coral); font-weight:600; font-size:0.85rem; margin-bottom:12px;}
+  .circuit p{color:var(--ink-dim); font-size:0.92rem; margin:0 0 12px;}
+  .circuit .route{font-size:0.84rem; color:var(--ink-dim);}
+  .circuit .route b{color:var(--ink); font-weight:600;}
+  .circuit.full{grid-column:1 / -1;}
+
+  /* WHY */
+  .why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  @media (max-width:820px){.why-grid{grid-template-columns:1fr;}}
+  .why-card{text-align:center; padding:8px;}
+  .why-card .ic{
+    width:56px; height:56px; border-radius:16px; background:var(--card); border:1px solid var(--card-border);
+    display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin:0 auto 16px;
+  }
+  .why-card h4{font-family:'Playfair Display',serif; color:var(--teal); margin:0 0 8px; font-size:1.1rem;}
+  .why-card p{color:var(--ink-dim); font-size:0.9rem; margin:0;}
+
+  /* CONTACT */
+  .contact-box{
+    background:var(--teal); border-radius:28px; padding:64px 48px; text-align:center; color:#fff;
+  }
+  .contact-box h2{font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3.6vw,2.6rem); margin:0 0 14px;}
+  .contact-box p{color:rgba(255,255,255,0.8); max-width:520px; margin:0 auto 32px;}
+  .contact-links{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+  .contact-box .btn-primary{background:var(--coral);}
+  .contact-box .btn-ghost{background:transparent; border-color:rgba(255,255,255,0.3); color:#fff;}
+  .contact-box .btn-ghost:hover{border-color:#fff;}
+  .contact-meta{margin-top:34px; display:flex; gap:32px; justify-content:center; flex-wrap:wrap; font-size:0.86rem; color:rgba(255,255,255,0.75);}
+
+  footer{border-top:1px solid var(--card-border); padding:36px 0; color:var(--ink-dim); font-size:0.85rem;}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand"><span class="dot"></span>Viví Salto</div>
+    <div class="nav-links">
+      <a href="#circuitos">Circuitos</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a class="nav-cta" href="https://wa.me/59892357669?text=Hola!%20Quiero%20reservar%20un%20recorrido%20con%20Viv%C3%AD%20Salto" target="_blank">Reservá tu recorrido</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow">📍 Salto, Uruguay</div>
+      <h1>Descubrí un Salto que <em>trasciende</em> las termas.</h1>
+      <p class="lead">Recorridos guiados a pie por la historia, la arquitectura y las historias que hicieron esta ciudad. Un Salto patrimonial y cultural, contado por guías que lo viven todos los días.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://wa.me/59892357669?text=Hola!%20Quiero%20reservar%20un%20recorrido%20con%20Viv%C3%AD%20Salto" target="_blank">💬 Reservar por WhatsApp</a>
+        <a class="btn btn-ghost" href="#circuitos">Ver los circuitos</a>
+      </div>
+      <div class="hero-stats">
+        <div class="s"><b>5</b><span>circuitos únicos</span></div>
+        <div class="s"><b>3</b><span>guías especializados</span></div>
+        <div class="s"><b>100%</b><span>historia y patrimonio local</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="cap">"Tierra sin tiempo, crisol de culturas y andares desde tiempos inmemoriales."
+        <small>Así describimos a Salto en cada recorrido.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-soft" id="nosotros">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <div class="founders">
+          <div class="avatar">A</div>
+          <div class="avatar">H</div>
+          <div class="avatar">F</div>
+        </div>
+      </div>
+      <div class="about-copy">
+        <div class="tag">Quiénes somos</div>
+        <h3>Anthony, Homero y Federico</h3>
+        <div class="role">Estudiantes avanzados de Turismo</div>
+        <p>Viví Salto surge con la convicción de revalorizar el departamento como un destino patrimonial y cultural de referencia. Nuestra propuesta invita a descubrir la ciudad desde una mirada renovada, explorando su identidad profunda.</p>
+        <p>Aspiramos a mostrar un Salto que trascienda la experiencia termal, integrando su arquitectura histórica, su costa, su necrópolis y una diversidad de espacios significativos que conforman su riqueza cultural.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="circuitos">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">Circuitos</div>
+      <h2>Elegí tu recorrido</h2>
+      <p>Cinco experiencias guiadas para conocer Salto desde otro lugar.</p>
+    </div>
+    <div class="circuits-grid">
+
+      <div class="circuit">
+        <div class="meta">
+          <span class="badge">⏱ 2 horas</span>
+          <span class="badge">Dificultad baja</span>
+        </div>
+        <div class="loc">Ciudad de Salto</div>
+        <h4>De Plaza a Plaza</h4>
+        <p>Recorrido guiado a pie que comienza en la Plaza Artigas, rememorando a nuestro prócer, para luego bajar por calle Uruguay destacando arquitectura y personajes del departamento, finalizando en la Plaza Treinta y Tres Orientales.</p>
+        <div class="route"><b>Paradas:</b> Plaza Artigas, Catedral Basílica San Juan Bautista, Museo de Bellas Artes, Mercado 18 de Julio, Palacio Veltroni, Plaza Treinta y Tres Orientales, Iglesia Ntra. Sra. del Carmen.</div>
+      </div>
+
+      <div class="circuit">
+        <div class="meta">
+          <span class="badge">⏱ 1 hora</span>
+          <span class="badge">Dificultad media</span>
+        </div>
+        <div class="loc">Termas del Daymán</div>
+        <h4>Monte, Río y Memoria</h4>
+        <p>Recorrido por la costa del Río Daymán que va más allá de las termas como destino consolidado, repasando su historia desde el Éxodo Oriental hasta el sendero, con flora nativa que fue sustento de las comunidades indígenas de la zona.</p>
+        <div class="route"><b>Paradas:</b> Costa del Río Daymán y sendero Daymán.</div>
+      </div>
+
+      <div class="circuit">
+        <div class="meta">
+          <span class="badge">⏱ 1 hora</span>
+          <span class="badge">Dificultad media</span>
+        </div>
+        <div class="loc">Teatro Dámaso Antonio Larrañaga</div>
+        <h4>Ecos del Larrañaga</h4>
+        <p>Circuito guiado dentro del Teatro Larrañaga, repasando su valor arquitectónico, histórico y social. Recorremos los tres palcos, "tras bambalinas", los camerinos y el patio interior, finalizando en el museo del teatro.</p>
+        <div class="route"><b>Paradas:</b> Interior completo del Teatro Dámaso Antonio Larrañaga.</div>
+      </div>
+
+      <div class="circuit">
+        <div class="meta">
+          <span class="badge">⏱ 1h 30min</span>
+          <span class="badge">Dificultad baja</span>
+        </div>
+        <div class="loc">Cementerio Central de Salto</div>
+        <h4>Un Salto a la Memoria</h4>
+        <p>Circuito por el casco antiguo del Cementerio Central, un espacio repleto de figuras e instituciones destacadas a nivel local. Descubrimos la simbología y los diseños de distintos panteones donde descansan personalidades que impulsaron el desarrollo de Salto.</p>
+        <div class="route"><b>Paradas:</b> Casco antiguo del Cementerio Central de Salto.</div>
+      </div>
+
+      <div class="circuit full">
+        <div class="meta">
+          <span class="badge">⏱ 1 hora</span>
+          <span class="badge">Zona Puerto y Costanera Sur</span>
+        </div>
+        <div class="loc">Identidad ribereña</div>
+        <h4>El Río como Identidad Salteña</h4>
+        <p>Este circuito reivindica la importancia que ha tenido el Río Uruguay para los salteños, tanto en el plano cultural como en lo social y económico. Conocemos la historia de sus impulsores: los astilleros, los viñedos y los saladeros que fueron pilares del desarrollo de la ciudad.</p>
+        <div class="route"><b>Paradas:</b> Plaza 33, Plaza Roosevelt, zona puerto, costanera sur, frigorífico La Caballada (Bodega Harriague).</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="bg-soft">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">Por qué elegirnos</div>
+      <h2>Una mirada distinta de Salto</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="ic">🎓</div>
+        <h4>Guías formados</h4>
+        <p>Estudiantes avanzados de turismo, apasionados por la historia local.</p>
+      </div>
+      <div class="why-card">
+        <div class="ic">🗺️</div>
+        <h4>Recorridos únicos</h4>
+        <p>Circuitos pensados para descubrir lo que las termas no muestran.</p>
+      </div>
+      <div class="why-card">
+        <div class="ic">🤝</div>
+        <h4>Grupos reducidos</h4>
+        <p>Experiencia cercana, con espacio para preguntas y anécdotas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="contact-box">
+      <h2>¿Listo para descubrir Salto?</h2>
+      <p>Reservá tu recorrido y viví la ciudad desde una mirada que no vas a encontrar en ninguna guía turística.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="https://wa.me/59892357669?text=Hola!%20Quiero%20reservar%20un%20recorrido%20con%20Viv%C3%AD%20Salto" target="_blank">💬 Reservar por WhatsApp</a>
+        <a class="btn btn-ghost" href="https://instagram.com/vivi_salto.uy" target="_blank">📷 @vivi_salto.uy</a>
+        <a class="btn btn-ghost" href="mailto:homerotexeira04@gmail.com">✉️ Escribinos</a>
+      </div>
+      <div class="contact-meta">
+        <span>📱 092 357 669</span>
+        <span>✉️ homerotexeira04@gmail.com</span>
+        <span>📍 Salto, Uruguay</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Viví Salto — Circuitos guiados por la ciudad</span>
+    <span>Sitio hecho por Ezequiel · ezeleites8@gmail.com</span>
+  </div>
+</footer>
+
+</body>
+</html>
