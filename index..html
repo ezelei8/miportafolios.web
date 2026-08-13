@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ezequiel · Sitios web para tu negocio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0f14;
+    --bg-soft:#111722;
+    --card:#161d29;
+    --card-border:#232c3c;
+    --text:#eef2f7;
+    --text-dim:#9aa7b9;
+    --accent:#5b8def;
+    --accent-2:#7bd7c1;
+    --accent-grad: linear-gradient(135deg, #5b8def, #7bd7c1);
+    --radius: 16px;
+    --maxw: 1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  section{padding:88px 0;}
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(10px);
+    background:rgba(11,15,20,0.85);
+    border-bottom:1px solid var(--card-border);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:18px; padding-bottom:18px;
+  }
+  .brand{font-weight:800; font-size:1.15rem; letter-spacing:-0.02em;}
+  .brand span{color:var(--accent-2);}
+  .nav-links{display:flex; gap:32px; font-size:0.95rem; color:var(--text-dim);}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{
+    background:var(--accent-grad); color:#08111f; font-weight:700;
+    padding:10px 20px; border-radius:999px; font-size:0.9rem;
+  }
+  @media (max-width:720px){ .nav-links{display:none;} }
+
+  /* HERO */
+  .hero{padding:120px 0 96px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--card); border:1px solid var(--card-border);
+    padding:6px 14px; border-radius:999px; font-size:0.82rem; color:var(--accent-2);
+    margin-bottom:28px;
+  }
+  h1{
+    font-size:clamp(2.2rem, 5vw, 3.6rem);
+    font-weight:800; letter-spacing:-0.03em; margin:0 0 20px;
+    max-width:780px;
+  }
+  h1 .grad{
+    background:var(--accent-grad); -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .lead{font-size:1.15rem; color:var(--text-dim); max-width:600px; margin:0 0 36px;}
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    padding:14px 26px; border-radius:12px; font-weight:700; font-size:0.98rem;
+    display:inline-flex; align-items:center; gap:8px; border:1px solid transparent;
+  }
+  .btn-primary{background:var(--accent-grad); color:#08111f;}
+  .btn-primary:hover{opacity:0.92;}
+  .btn-ghost{border-color:var(--card-border); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent);}
+
+  .stats{display:flex; gap:48px; margin-top:64px; flex-wrap:wrap;}
+  .stat b{display:block; font-size:1.8rem; font-weight:800;}
+  .stat span{color:var(--text-dim); font-size:0.88rem;}
+
+  /* SECTION HEADS */
+  .section-head{max-width:600px; margin:0 auto 56px; text-align:center;}
+  .tag{color:var(--accent-2); font-weight:700; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em;}
+  .section-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem); margin:12px 0 12px; letter-spacing:-0.02em;}
+  .section-head p{color:var(--text-dim); margin:0;}
+
+  /* SERVICES */
+  .bg-soft{background:var(--bg-soft); border-top:1px solid var(--card-border); border-bottom:1px solid var(--card-border);}
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  @media (max-width:900px){.grid-3{grid-template-columns:1fr;}}
+  .card{
+    background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius);
+    padding:32px;
+  }
+  .card .icon{
+    width:44px; height:44px; border-radius:12px; background:var(--accent-grad);
+    display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin-bottom:20px;
+  }
+  .card h3{margin:0 0 10px; font-size:1.15rem;}
+  .card p{color:var(--text-dim); font-size:0.95rem; margin:0;}
+
+  /* PORTFOLIO */
+  .portfolio-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  @media (max-width:900px){.portfolio-grid{grid-template-columns:1fr;}}
+  .pf-card{
+    border-radius:var(--radius); overflow:hidden; border:1px solid var(--card-border);
+    background:var(--card);
+  }
+  .pf-thumb{
+    height:180px; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:1.4rem; color:rgba(255,255,255,0.85);
+  }
+  .pf-thumb.t1{background:linear-gradient(135deg,#5b8def,#3350a1);}
+  .pf-thumb.t2{background:linear-gradient(135deg,#7bd7c1,#2f7a68);}
+  .pf-thumb.t3{background:linear-gradient(135deg,#f0a860,#a15b30);}
+  .pf-body{padding:20px;}
+  .pf-body .cat{color:var(--accent-2); font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em;}
+  .pf-body h4{margin:8px 0 6px; font-size:1.05rem;}
+  .pf-body p{margin:0; color:var(--text-dim); font-size:0.9rem;}
+  .pf-note{
+    margin-top:24px; text-align:center; color:var(--text-dim); font-size:0.88rem;
+    border:1px dashed var(--card-border); border-radius:12px; padding:14px;
+  }
+
+  /* PROCESS */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; counter-reset:step;}
+  @media (max-width:900px){.steps{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.steps{grid-template-columns:1fr;}}
+  .step{position:relative; padding-top:8px;}
+  .step .num{
+    font-size:2.2rem; font-weight:800; color:transparent;
+    -webkit-text-stroke:1.5px var(--card-border);
+    margin-bottom:8px;
+  }
+  .step h4{margin:0 0 8px; font-size:1.02rem;}
+  .step p{margin:0; color:var(--text-dim); font-size:0.9rem;}
+
+  /* PRICING */
+  .pricing-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; align-items:stretch;}
+  @media (max-width:900px){.pricing-grid{grid-template-columns:1fr;}}
+  .price-card{
+    background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius);
+    padding:32px; display:flex; flex-direction:column;
+  }
+  .price-card.featured{border-color:var(--accent); box-shadow:0 0 0 1px var(--accent), 0 20px 60px -20px rgba(91,141,239,0.4);}
+  .price-card .plan{font-weight:700; color:var(--accent-2); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.06em;}
+  .price-card .amount{font-size:2.3rem; font-weight:800; margin:12px 0 4px;}
+  .price-card .amount small{font-size:0.95rem; font-weight:500; color:var(--text-dim);}
+  .price-card .desc{color:var(--text-dim); font-size:0.9rem; margin-bottom:24px;}
+  .price-card ul{list-style:none; padding:0; margin:0 0 28px; flex:1;}
+  .price-card li{padding:8px 0; border-top:1px solid var(--card-border); font-size:0.92rem; color:var(--text-dim);}
+  .price-card li:first-child{border-top:none;}
+  .price-card li::before{content:"✓ "; color:var(--accent-2); font-weight:700;}
+
+  /* CONTACT */
+  .contact-box{
+    background:var(--card); border:1px solid var(--card-border); border-radius:24px;
+    padding:56px; text-align:center;
+  }
+  .contact-box h2{font-size:clamp(1.6rem,3.2vw,2.2rem); margin:0 0 14px; letter-spacing:-0.02em;}
+  .contact-box p{color:var(--text-dim); max-width:520px; margin:0 auto 32px;}
+  .contact-links{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+
+  footer{border-top:1px solid var(--card-border); padding:36px 0; color:var(--text-dim); font-size:0.85rem;}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">Ezequiel<span>.dev</span></div>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#proceso">Cómo trabajo</a>
+      <a href="#precios">Precios</a>
+    </div>
+    <a class="nav-cta" href="#contacto">Pedí tu presupuesto</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">🟢 Disponible para nuevos proyectos</div>
+    <h1>Sitios web que hacen que tu negocio <span class="grad">se vea profesional</span> desde el día uno.</h1>
+    <p class="lead">Diseño y desarrollo páginas web simples, rápidas y a medida para pymes, profesionales y emprendimientos. Sin vueltas, con precio claro y entrega en días, no en meses.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#contacto">Quiero mi sitio web →</a>
+      <a class="btn btn-ghost" href="#portfolio">Ver trabajos</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>72h</b><span>entrega de un sitio básico</span></div>
+      <div class="stat"><b>100%</b><span>optimizado para celular</span></div>
+      <div class="stat"><b>1</b><span>punto de contacto, sin intermediarios</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-soft" id="servicios">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">Servicios</div>
+      <h2>Lo que puedo hacer por tu negocio</h2>
+      <p>Cada proyecto se ajusta a lo que necesitás, sin pagar de más por cosas que no vas a usar.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon">🌐</div>
+        <h3>Sitio web a medida</h3>
+        <p>Páginas de presentación, landing pages y sitios de varias secciones, con diseño propio y adaptado a tu marca.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💬</div>
+        <h3>Integración con WhatsApp</h3>
+        <p>Botón directo de contacto y formularios conectados para que los clientes te escriban sin fricción.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🛠️</div>
+        <h3>Mantenimiento mensual</h3>
+        <p>Cambios de contenido, actualizaciones y soporte para que tu sitio nunca quede desactualizado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">Portfolio</div>
+      <h2>Proyectos de ejemplo</h2>
+      <p>Estos son modelos de referencia. En cuanto sumemos los primeros clientes reales, esta sección se actualiza con casos concretos.</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="pf-card">
+        <div class="pf-thumb t1">Restaurante</div>
+        <div class="pf-body">
+          <div class="cat">Gastronomía</div>
+          <h4>Sitio + menú digital</h4>
+          <p>Landing con menú, ubicación y reservas por WhatsApp.</p>
+        </div>
+      </div>
+      <div class="pf-card">
+        <div class="pf-thumb t2">Consultorio</div>
+        <div class="pf-body">
+          <div class="cat">Salud</div>
+          <h4>Sitio + turnos online</h4>
+          <p>Presentación profesional con formulario de solicitud de turno.</p>
+        </div>
+      </div>
+      <div class="pf-card">
+        <div class="pf-thumb t3">Inmobiliaria</div>
+        <div class="pf-body">
+          <div class="cat">Bienes raíces</div>
+          <h4>Catálogo de propiedades</h4>
+          <p>Listado filtrable de propiedades con contacto directo.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pf-note">¿Tenés un negocio y querés ser el primer caso real acá? Escribime y lo armamos juntos.</div>
+  </div>
+</section>
+
+<section class="bg-soft" id="proceso">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">Cómo trabajo</div>
+      <h2>De la idea al sitio publicado</h2>
+      <p>Un proceso simple, sin sorpresas, con precio acordado antes de empezar.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><h4>Charla inicial</h4><p>Contame sobre tu negocio y qué necesitás mostrar.</p></div>
+      <div class="step"><div class="num">02</div><h4>Propuesta y precio</h4><p>Te paso una propuesta clara con alcance y costo cerrado.</p></div>
+      <div class="step"><div class="num">03</div><h4>Diseño y desarrollo</h4><p>Armo el sitio y te muestro avances antes de publicarlo.</p></div>
+      <div class="step"><div class="num">04</div><h4>Entrega y soporte</h4><p>Publicamos el sitio y quedo disponible para ajustes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="precios">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">Precios</div>
+      <h2>Planes simples y transparentes</h2>
+      <p>Precios de referencia en USD. Se ajustan según el alcance real de tu proyecto.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="plan">Básico</div>
+        <div class="amount">$300<small> único pago</small></div>
+        <div class="desc">Ideal para presentarte online rápido.</div>
+        <ul>
+          <li>1 página (landing)</li>
+          <li>Diseño responsive</li>
+          <li>Botón de WhatsApp</li>
+          <li>Entrega en 72hs</li>
+        </ul>
+        <a class="btn btn-ghost" href="#contacto">Elegir plan</a>
+      </div>
+      <div class="price-card featured">
+        <div class="plan">Profesional</div>
+        <div class="amount">$550<small> único pago</small></div>
+        <div class="desc">El más elegido por pymes y profesionales.</div>
+        <ul>
+          <li>Hasta 5 secciones/páginas</li>
+          <li>Formulario de contacto</li>
+          <li>SEO básico + Google Business</li>
+          <li>1 ronda de cambios incluida</li>
+        </ul>
+        <a class="btn btn-primary" href="#contacto">Elegir plan</a>
+      </div>
+      <div class="price-card">
+        <div class="plan">Mantenimiento</div>
+        <div class="amount">$30<small> /mes</small></div>
+        <div class="desc">Para sitios ya publicados.</div>
+        <ul>
+          <li>Hosting y dominio incluidos</li>
+          <li>Cambios de contenido</li>
+          <li>Soporte por WhatsApp</li>
+          <li>Cancelás cuando quieras</li>
+        </ul>
+        <a class="btn btn-ghost" href="#contacto">Elegir plan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="contact-box">
+      <h2>¿Le damos forma a tu sitio?</h2>
+      <p>Contame de tu negocio y en menos de 24hs te paso una propuesta con precio cerrado.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="https://wa.me/59899576240?text=Hola!%20Vi%20tu%20sitio%20web%20y%20quiero%20hacer%20una%20consulta" target="_blank">💬 Escribir por WhatsApp</a>
+        <a class="btn btn-ghost" href="mailto:ezeleites8@gmail.com">✉️ ezeleites8@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Ezequiel — Diseño y desarrollo web</span>
+    <span>Montevideo, Uruguay</span>
+  </div>
+</footer>
+
+</body>
+</html>
